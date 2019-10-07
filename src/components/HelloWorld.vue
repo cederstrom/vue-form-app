@@ -43,6 +43,11 @@
         </v-layout>
       </v-flex>
 
+      <v-flex xs12 mb-5>
+        <h2>Custom message</h2>
+        <p>{{ msg }}</p>
+      </v-flex>
+
       <v-flex
         xs12
         mb-5
@@ -138,5 +143,8 @@ export default {
       },
     ],
   }),
+  props: {
+    msg: String,
+  },
 };
 </script>
