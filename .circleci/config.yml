@@ -7,11 +7,14 @@ orbs:
   # import Cypress orb by specifying an exact version x.y.z
   # or the latest version 1.x.x using "@1" syntax
   cypress: cypress-io/cypress@1
+  node: circleci/node@1.1.6
 workflows:
   build:
     jobs:
-      # "cypress" is the name of the imported orb
-      # "run" is the name of the job defined in Cypress orb
+      - node/with-cache:
+          steps:
+            - run: npm install
+            - run: npm run test:unit
       - cypress/run:
           start: npm run serve
           wait-on: 'http://localhost:8080'
