@@ -7,7 +7,8 @@
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "test:e2e": "vue-cli-service test:e2e",
-    "test:unit": "vue-cli-service test:unit"
+    "test:unit": "vue-cli-service test:unit",
+    "test": "vue-cli-service test:unit && vue-cli-service test:e2e --headless"
   },
   "dependencies": {
     "core-js": "^2.6.5",
@@ -35,7 +36,8 @@
     "sass-loader": "^7.1.0",
     "vue-cli-plugin-vuetify": "^0.6.3",
     "vue-template-compiler": "^2.6.10",
-    "vuetify-loader": "^1.2.2"
+    "vuetify-loader": "^1.2.2",
+    "wait-on": "^3.3.0"
   },
   "eslintConfig": {
     "root": true,
