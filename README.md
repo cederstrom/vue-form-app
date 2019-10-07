@@ -1,4 +1,8 @@
-# form-app-new
+# CI testing a Vue application
+
+This repository is a demo of running both unit test with [Jest](https://jestjs.io/) and e2e tests with [Cypress](https://www.cypress.io/) in a [Circle CI](https://circleci.com) pipeline. Use it as inspiration or as a plain boilerplate.
+
+Contributions are welcome!
 
 ## Project setup
 ```
