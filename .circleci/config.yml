@@ -12,5 +12,7 @@ workflows:
     jobs:
       - node/jest
       - cypress/run:
+          requires:
+            - node/jest
           start: npm run serve
           wait-on: 'http://localhost:8080'
