@@ -11,7 +11,9 @@ workflows:
   verify:
     jobs:
       - node/jest
+          name: Unit test
       - cypress/run:
+          name: e2e test
           requires:
             - node/jest
           start: npm run serve
