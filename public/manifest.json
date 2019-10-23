@@ -1,6 +1,6 @@
 {
-  "name": "form-app-new",
-  "short_name": "form-app-new",
+  "name": "Demo app",
+  "short_name": "Demo app",
   "icons": [
     {
       "src": "./img/icons/android-chrome-192x192.png",
