@@ -1,5 +1,7 @@
 import { mount } from '@vue/test-utils';
 import Vue from 'vue';
+// eslint-disable-next-line no-unused-vars
+import axios from 'axios';
 import Submit from '@/views/Submit.vue';
 
 jest.mock('axios', () => ({
@@ -13,8 +15,8 @@ describe('Submit.vue', () => {
 
   beforeEach(() => {
     submitView = mount(Submit, { sync: false });
-    inputName = submitView.find('#input-name');
-    inputAge = submitView.find('#input-age');
+    inputName = submitView.find('[testid="input-name"]');
+    inputAge = submitView.find('[testid="input-age"]');
   });
 
   describe('when mounted', () => {

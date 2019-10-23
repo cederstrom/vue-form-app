@@ -5,19 +5,19 @@
       <h3>Add a new member</h3>
       <v-row>
         <v-col class="pr-4">
-          <v-text-field id="input-name" label="Name" type="text" outlined v-model="name"
+          <v-text-field testid="input-name" label="Name" type="text" outlined v-model="name"
             :rules="nameRules" :counter="maxNameLength"></v-text-field>
         </v-col>
       </v-row>
       <v-row>
         <v-col class="pr-4">
-          <v-text-field id="input-age" label="Age" type="number" outlined v-model="age" min="0"
+          <v-text-field testid="input-age" label="Age" type="number" outlined v-model="age" min="0"
             :rules="ageRules"></v-text-field>
         </v-col>
       </v-row>
       <v-row>
         <v-col class="pr-4">
-          <v-btn @click="validateAndSubmit">Submit</v-btn>
+          <v-btn testid="button-submit" @click="validateAndSubmit">Submit</v-btn>
         </v-col>
       </v-row>
     </v-form>
@@ -25,13 +25,15 @@
     <v-row>
       <v-col class="pr-4">
         <h2>All members</h2>
-        <v-simple-table id="members">
+        <v-simple-table testid="members">
           <thead>
             <th class="text-left">Name</th>
+            <th class="text-left">Age</th>
           </thead>
           <tbody>
             <tr v-for="member in members" v-bind:key="member.name">
               <td>{{ member.name }}</td>
+              <td>{{ member.age }}</td>
             </tr>
           </tbody>
         </v-simple-table>
@@ -66,10 +68,6 @@ export default {
   },
   methods: {
     validateAndSubmit() {
-      /*
-      if (this.$refs.form.validate()) {
-      }
-      */
     },
     fetchMembers() {
       axios.get('/members').then((result) => {
