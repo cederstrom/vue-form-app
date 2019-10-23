@@ -2,15 +2,15 @@
   <v-app>
     <v-app-bar app>
       <v-toolbar-title class="headline text-uppercase">
-        <span>Vuetify</span>
-        <span class="font-weight-light">MATERIAL DESIGN</span>
+        <span>Demo</span>
+        <span class="font-weight-light">APP</span>
       </v-toolbar-title>
       <v-spacer></v-spacer>
       <v-btn text to="/" exact>
         <span class="mr-2">Home</span>
       </v-btn>
       <v-btn text to="/submit">
-        <span class="mr-2">Submit form</span>
+        <span class="mr-2">Members</span>
       </v-btn>
     </v-app-bar>
 
@@ -23,8 +23,5 @@
 <script>
 export default {
   name: 'App',
-  data: () => ({
-    //
-  }),
 };
 </script>

@@ -3,10 +3,10 @@
 describe('any form', () => {
   beforeEach(() => {
     cy.visit('/');
-    cy.contains('Submit form').click();
+    cy.contains('Members').click();
   });
 
   it('contextual information can be displayed', () => {
-    cy.get('h1').contains('Submit form');
+    cy.get('h1').contains('Members');
   });
 });

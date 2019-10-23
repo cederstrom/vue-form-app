@@ -1,61 +1,30 @@
 <template>
   <v-container>
-    <h2>Members</h2>
-    <v-form
-      ref="form"
-      v-model="valid"
-    >
+    <h1>Members</h1>
+    <v-form ref="form" v-model="valid">
       <h3>Add a new member</h3>
-      <v-row v-if="errors.length">
-        <strong>Please correct the following errors:</strong>
-        <ul>
-          <li v-for="error in errors" v-bind:key="error">{{ error }}</li>
-        </ul>
-      </v-row>
-
       <v-row>
         <v-col class="pr-4">
-          <v-text-field
-            id="input-name"
-            label="Name"
-            type="text"
-            outlined
-            v-model="name"
-            required
-            :rules="nameRules"
-            :counter="maxNameLength"
-          ></v-text-field>
+          <v-text-field id="input-name" label="Name" type="text" outlined v-model="name"
+            :rules="nameRules" :counter="maxNameLength"></v-text-field>
         </v-col>
       </v-row>
-
       <v-row>
         <v-col class="pr-4">
-          <v-text-field
-            id="input-age"
-            label="Age"
-            type="number"
-            outlined
-            v-model="age"
-            required
-            min="0"
-            :rules="ageRules"
-          ></v-text-field>
+          <v-text-field id="input-age" label="Age" type="number" outlined v-model="age" min="0"
+            :rules="ageRules"></v-text-field>
         </v-col>
       </v-row>
-
       <v-row>
         <v-col class="pr-4">
-          <v-btn
-            @click="validateAndSubmit"
-          >Submit</v-btn>
+          <v-btn @click="validateAndSubmit">Submit</v-btn>
         </v-col>
       </v-row>
-
     </v-form>
 
     <v-row>
       <v-col class="pr-4">
-        <h3>All members</h3>
+        <h2>All members</h2>
         <v-simple-table id="members">
           <thead>
             <th class="text-left">Name</th>
@@ -77,9 +46,7 @@ import axios from 'axios';
 export default {
   data() {
     return {
-      maxNameLength: 2,
-      errors: [],
-      lazy: false,
+      maxNameLength: 20,
       valid: false,
       name: '',
       age: null,
@@ -95,15 +62,19 @@ export default {
     };
   },
   mounted() {
-    axios.get('/members').then((result) => {
-      this.members = result.data;
-    });
+    this.fetchMembers();
   },
   methods: {
     validateAndSubmit() {
+      /*
       if (this.$refs.form.validate()) {
-        this.snackbar = true;
       }
+      */
+    },
+    fetchMembers() {
+      axios.get('/members').then((result) => {
+        this.members = result.data;
+      });
     },
   },
 };
