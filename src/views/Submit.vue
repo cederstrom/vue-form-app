@@ -17,7 +17,7 @@
       </v-row>
       <v-row>
         <v-col class="pr-4">
-          <v-btn testid="button-submit" @click="validateAndSubmit">Submit</v-btn>
+          <v-btn testid="button-submit" @click="submit">Submit</v-btn>
         </v-col>
       </v-row>
     </v-form>
@@ -67,7 +67,7 @@ export default {
     this.fetchMembers();
   },
   methods: {
-    validateAndSubmit() {
+    submit() {
     },
     fetchMembers() {
       axios.get('/members').then((result) => {
