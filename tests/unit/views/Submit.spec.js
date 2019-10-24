@@ -22,7 +22,7 @@ describe('Submit.vue', () => {
   describe('when mounted', () => {
     test('it shall show all members', async () => {
       await Vue.nextTick();
-      expect(submitView.find('#members').text()).toMatch('Kevin');
+      expect(submitView.find('[testid="members"]').text()).toMatch('Kevin');
     });
   });
 
