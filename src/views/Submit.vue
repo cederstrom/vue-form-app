@@ -68,6 +68,13 @@ export default {
   },
   methods: {
     submit() {
+      const newMember = {
+        name: this.name,
+        age: this.age,
+      };
+      axios.post('/members', newMember).then(() => {
+        this.members.push(newMember);
+      });
     },
     fetchMembers() {
       axios.get('/members').then((result) => {

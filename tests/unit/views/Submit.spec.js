@@ -6,17 +6,22 @@ import Submit from '@/views/Submit.vue';
 
 jest.mock('axios', () => ({
   get: jest.fn(() => Promise.resolve({ data: [{ name: 'Kevin' }] })),
+  post: jest.fn(() => Promise.resolve()),
 }));
 
 describe('Submit.vue', () => {
   let submitView;
   let inputName;
   let inputAge;
+  let buttonSubmit;
+  let tableRows;
 
   beforeEach(() => {
     submitView = mount(Submit, { sync: false });
     inputName = submitView.find('[testid="input-name"]');
     inputAge = submitView.find('[testid="input-age"]');
+    buttonSubmit = submitView.find('[testid="button-submit"]');
+    tableRows = submitView.find('[testid="members"]');
   });
 
   describe('when mounted', () => {
@@ -74,6 +79,30 @@ describe('Submit.vue', () => {
       await setValue(inputName, 'AAA');
       await setValue(inputAge, '-1');
       expect(submitView.vm.valid).toBe(false);
+    });
+  });
+
+  describe('when submitting', () => {
+    beforeEach(async () => {
+      submitView.vm.members = [];
+      await setValue(inputName, 'A Name');
+      await setValue(inputAge, '12');
+      buttonSubmit.trigger('click');
+    });
+
+    test('shall send new member to backend', async () => {
+      expect(axios.post.mock.calls.length).toEqual(1);
+      expect(axios.post.mock.calls[0][0]).toEqual('/members');
+      expect(axios.post.mock.calls[0][1]).toEqual({
+        name: 'A Name',
+        age: '12',
+      });
+    });
+
+    test('shall update members in DOM', () => {
+      expect(tableRows.findAll('tr').length).toEqual(1);
+      expect(tableRows.find('tr td:nth-child(1)').text()).toEqual('A Name');
+      expect(tableRows.find('tr td:nth-child(2)').text()).toEqual('12');
     });
   });
 });
