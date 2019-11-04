@@ -1,7 +1,13 @@
 /// <reference types="Cypress" />
 
-describe('any form', () => {
+describe('Member page', () => {
   beforeEach(() => {
+    cy.server()
+    cy.route({
+      method: 'GET',
+      url: '/members',
+      response: [{ name: 'Kevin', age: 12 }, { name: 'Cortez', age: 56 }]
+    })
     cy.visit('/');
     cy.contains('Members').click();
   });
