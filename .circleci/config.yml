@@ -16,3 +16,8 @@ workflows:
             - node/jest
           start: npm run serve
           wait-on: 'http://localhost:8080'
+          post-steps:
+            - store_artifacts:
+                path: tests/e2e/screenshots/
+            - store_artifacts:
+                path: tests/e2e/videos/
