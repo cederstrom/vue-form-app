@@ -5,14 +5,29 @@
       <h3>Add a new member</h3>
       <v-row>
         <v-col class="pr-4">
-          <v-text-field testid="input-name" label="Name" type="text" outlined v-model="name"
-            :rules="nameRules" :counter="maxNameLength"></v-text-field>
+          <v-text-field
+            testid="input-name"
+            class="kevin"
+            label="Name"
+            type="text"
+            outlined
+            v-model="name"
+            :rules="nameRules"
+            :counter="maxNameLength"
+          ></v-text-field>
         </v-col>
       </v-row>
       <v-row>
         <v-col class="pr-4">
-          <v-text-field testid="input-age" label="Age" type="number" outlined v-model="age" min="0"
-            :rules="ageRules"></v-text-field>
+          <v-text-field
+            testid="input-age"
+            label="Age"
+            type="number"
+            outlined
+            v-model="age"
+            min="0"
+            :rules="ageRules"
+          ></v-text-field>
         </v-col>
       </v-row>
       <v-row>
@@ -43,24 +58,26 @@
 </template>
 
 <script>
-import axios from 'axios';
+import axios from "axios";
 
 export default {
   data() {
     return {
       maxNameLength: 20,
       valid: false,
-      name: '',
+      name: "",
       age: null,
       nameRules: [
-        v => !!v || 'Name is required',
-        v => (v && v.length <= this.maxNameLength) || `Name must be ${this.maxNameLength} characters or less`,
+        v => !!v || "Name is required",
+        v =>
+          (v && v.length <= this.maxNameLength) ||
+          `Name must be ${this.maxNameLength} characters or less`
       ],
       ageRules: [
-        v => !!v || 'Age is required',
-        v => (v && this.age > 0) || 'You must be be at least 1 year old',
+        v => !!v || "Age is required",
+        v => (v && this.age > 0) || "You must be be at least 1 year old"
       ],
-      members: null,
+      members: null
     };
   },
   mounted() {
@@ -68,12 +85,13 @@ export default {
   },
   methods: {
     submit() {
+      console.log("Someone pressed the submit button");
     },
     fetchMembers() {
-      axios.get('/members').then((result) => {
+      axios.get("/members").then(result => {
         this.members = result.data;
       });
-    },
-  },
+    }
+  }
 };
 </script>
