@@ -6,7 +6,7 @@
       <v-row>
         <v-col class="pr-4">
           <v-text-field
-            testid="input-name"
+            data-testid="input-name"
             class="kevin"
             label="Name"
             type="text"
@@ -20,7 +20,7 @@
       <v-row>
         <v-col class="pr-4">
           <v-text-field
-            testid="input-age"
+            data-testid="input-age"
             label="Age"
             type="number"
             outlined
@@ -32,7 +32,7 @@
       </v-row>
       <v-row>
         <v-col class="pr-4">
-          <v-btn testid="button-submit" @click="submit">Submit</v-btn>
+          <v-btn data-testid="button-submit" @click="submit">Submit</v-btn>
         </v-col>
       </v-row>
     </v-form>
@@ -40,7 +40,7 @@
     <v-row>
       <v-col class="pr-4">
         <h2>All members</h2>
-        <v-simple-table testid="members">
+        <v-simple-table data-testid="members">
           <thead>
             <th class="text-left">Name</th>
             <th class="text-left">Age</th>
