@@ -86,6 +86,11 @@ export default {
   methods: {
     submit() {
       console.log("Someone pressed the submit button");
+      const newMember = {
+        name: this.name,
+        age: this.age
+      };
+      this.members.push(newMember);
     },
     fetchMembers() {
       axios.get("/members").then(result => {
