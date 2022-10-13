@@ -7,7 +7,6 @@
         <v-col class="pr-4">
           <v-text-field
             data-testid="input-name"
-            class="kevin"
             label="Name"
             type="text"
             outlined

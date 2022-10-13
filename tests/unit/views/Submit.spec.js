@@ -1,7 +1,5 @@
 import { mount } from '@vue/test-utils';
 import Vue from 'vue';
-// eslint-disable-next-line no-unused-vars
-import axios from 'axios';
 import Submit from '@/views/Submit.vue';
 
 jest.mock('axios', () => ({
@@ -15,14 +13,14 @@ describe('Submit.vue', () => {
 
   beforeEach(() => {
     submitView = mount(Submit, { sync: false });
-    inputName = submitView.find('[testid="input-name"]');
-    inputAge = submitView.find('[testid="input-age"]');
+    inputName = submitView.find('[data-testid="input-name"]');
+    inputAge = submitView.find('[data-testid="input-age"]');
   });
 
   describe('when mounted', () => {
     test('it shall show all members', async () => {
       await Vue.nextTick();
-      expect(submitView.find('[testid="members"]').text()).toMatch('Kevin');
+      expect(submitView.find('[data-testid="members"]').text()).toMatch('Kevin');
     });
   });
 
@@ -35,6 +33,7 @@ describe('Submit.vue', () => {
 
   describe('validation', () => {
     test('shall not allow empty name', async () => {
+      await setValue(inputName, 'a');
       await setValue(inputName, '');
       expect(submitView.text()).toMatch('Name is required');
     });
@@ -45,8 +44,8 @@ describe('Submit.vue', () => {
     });
 
     test('shall not allow empty age', async () => {
-      await setValue(inputName, '');
-      expect(submitView.text()).toMatch('Name is required');
+      await setValue(inputAge, '');
+      expect(submitView.text()).toMatch('Age is required');
     });
 
     test('shall not allow negative age', async () => {
