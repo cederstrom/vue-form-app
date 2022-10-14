@@ -2,16 +2,17 @@
 
 describe("Member page", () => {
   beforeEach(() => {
-    cy.intercept("/members",
-      [{ name: "Kevin", age: 12 }, { name: "Cortez", age: 56 }]
-    );
+    cy.intercept("/members", [
+      { name: "Kevin", age: 12 },
+      { name: "Cortez", age: 56 },
+    ]);
     cy.visit("/");
     cy.contains("Members").click();
   });
 
   it("contains a header", () => {
     cy.get("h1").contains("Members");
-  })
+  });
 
   it("contains some initial data", () => {
     cy.get('[data-testid="members"] tr:first').contains("Kevin");
