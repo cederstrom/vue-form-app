@@ -1,41 +1,41 @@
 name: Build and test
 
 on:
-    push:
-        branches: [main]
-    pull_request:
-        # All branches
-    workflow_dispatch:
+  push:
+    branches: [main]
+  pull_request:
+    # All branches
+  workflow_dispatch:
 
 env:
-    DOTNET_VERSION: "6.0.200"
-    ASPNETCORE_ENVIRONMENT: Ci
+  DOTNET_VERSION: "6.0.200"
+  ASPNETCORE_ENVIRONMENT: Ci
 
 jobs:
-    build_and_test:
-        runs-on: ubuntu-latest
+  build_and_test:
+    runs-on: ubuntu-latest
 
-        steps:
-            - uses: actions/checkout@v2
+    steps:
+      - uses: actions/checkout@v2
 
-            - name: Setup
-              run: yarn install
+      - name: Setup
+        run: yarn install
 
-            - name: Linting
-              run: yarn lint
+      - name: Linting
+        run: yarn lint
 
-            - name: Testing
-              run: yarn test
+      - name: Testing
+        run: yarn test
 
-            - name: Building
-              run: yarn build
+      - name: Building
+        run: yarn build
 
-            - name: Start application and run e2e tests
-              run: yarn test:e2e
+      - name: Start application and run e2e tests
+        run: yarn test:e2e
 
-            - name: Archive Cypress artifacts
-              uses: actions/upload-artifact@v3
-              with:
-                  name: cypress-artifacts
-                  path: test/cypress/artifacts
-                  retention-days: 3
+      - name: Archive Cypress artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: cypress-artifacts
+          path: tests/e2e/output
+          retention-days: 3
