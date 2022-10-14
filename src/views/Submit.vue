@@ -31,7 +31,9 @@
       </v-row>
       <v-row>
         <v-col class="pr-4">
+          <!--
           <v-btn data-testid="button-submit" @click="submit">Submit</v-btn>
+          -->
         </v-col>
       </v-row>
     </v-form>
@@ -89,7 +91,7 @@ export default {
         name: this.name,
         age: this.age
       };
-      this.members.push(newMember);
+      //this.members.push(newMember);
     },
     fetchMembers() {
       axios.get("/members").then(result => {
